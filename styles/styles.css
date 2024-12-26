@@ -1,0 +1,158 @@
+* {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.side-menu {
+  width: 200px;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.side-menu a {
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.side-menu a:hover {
+  background-color: #ff3333;
+}
+
+.side-menu a.active {
+  background-color: #ff0101;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #af84ff;
+  position: relative;
+}
+
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.box {
+  background-color: #ddd;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.box.small {
+  flex: 1;
+}
+
+.box.large {
+  width: 96%;
+}
+
+.popup-button {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-button:hover {
+  background-color: #0056b3;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup h2 {
+  margin-top: 0;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup form input,
+.popup form button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.popup form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup form button:hover {
+  background-color: #0056b3;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.popup-overlay.active {
+  display: block;
+}

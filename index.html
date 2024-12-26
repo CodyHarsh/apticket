@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apticket</title>
-</head>
-<body>
-    <header>
-        <h1>Apticket</h1>
-    </header>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticketing System</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="side-menu">
+      <a id="menu-dashboard" onclick="showContent('dashboard', this)"
+        >Dashboard</a
+      >
+      <a id="menu-all-tickets" onclick="showContent('all-tickets', this)"
+        >All Tickets</a
+      >
+      <a
+        id="menu-assigned-tickets"
+        onclick="showContent('assigned-tickets', this)"
+        >Assigned Tickets</a
+      >
+      <a
+        id="menu-pending-tickets"
+        onclick="showContent('pending-tickets', this)"
+        >Pending Tickets</a
+      >
+    </div>
+
+    <div class="main-content">
+      <button class="popup-button" onclick="togglePopup()">Open Popup</button>
+      <div id="dashboard" class="content active">
+        <h1>Dashboard</h1>
+        <p>Welcome to the ticketing system dashboard.</p>
+        <div class="box-container">
+          <div class="row">
+            <div class="box small">Pending Tickets</div>
+            <div class="box small">Resolved Tickets</div>
+          </div>
+          <div class="box large">All Tickets</div>
+        </div>
+      </div>
+      <div id="all-tickets" class="content">
+        <h1>All Tickets</h1>
+        <p>Here is a list of all tickets in the system.</p>
+      </div>
+      <div id="assigned-tickets" class="content">
+        <h1>Assigned Tickets</h1>
+        <p>These are the tickets assigned to you.</p>
+      </div>
+      <div id="pending-tickets" class="content">
+        <h1>Pending Tickets</h1>
+        <p>These tickets are pending resolution.</p>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay" onclick="togglePopup()"></div>
+    <div class="popup" id="popup">
+      <h2>Popup Form</h2>
+      <form>
+        <input type="text" placeholder="Enter your name" />
+        <input type="email" placeholder="Enter your email" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script src="assests/script/script.js"></script>
+  </body>
 </html>
