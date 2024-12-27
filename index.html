@@ -26,7 +26,7 @@
     <div class="main-content">
       <button class="popup-button" onclick="togglePopup()">Create New Ticket</button>
 
-      <!-- Dashboard Content -->
+      
       <div id="dashboard" class="content active">
         <h1>Dashboard</h1>
         <p>Welcome to the ticketing system dashboard.</p>
@@ -34,24 +34,24 @@
           <div class="row">
             <div class="box small">
               <h3>Pending Tickets</h3>
-              <p id="pendingTicketsCount">0</p> <!-- Dynamic count will be here -->
+              <p id="pendingTicketsCount">0</p> 
               <button class="navigate-btn" onclick="showContent('pending-tickets', this)"><i class="fa-solid fa-play" ></i></button>
             </div>
             <div class="box small">
               <h3>Assigned Tickets</h3>
-              <p id="assignedTicketsCount">1</p> <!-- Dynamic count will be here -->
+              <p id="assignedTicketsCount">1</p>
               <button class="navigate-btn" onclick="showContent('assigned-tickets', this)"><i class="fa-solid fa-play"></i></button>
             </div>
           </div>
           <div class="box large">
             <h3>Total Tickets</h3>
-            <p id="totalTicketsCount">0</p> <!-- Dynamic count will be here -->
+            <p id="totalTicketsCount">0</p>
             <button class="navigate-btn" onclick="showContent('all-tickets', this)"><i class="fa-solid fa-play" ></i></button>
           </div>
         </div>
       </div>
 
-      <!-- All Tickets Content -->
+      
       <div id="all-tickets" class="content">
         <h1>All Tickets</h1>
         <p>Here is a list of all tickets in the system.</p>
@@ -89,12 +89,12 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Tickets will be dynamically loaded here -->
+            
           </tbody>
         </table>
       </div>
 
-      <!-- Assigned Tickets Content -->
+      
       <div id="assigned-tickets" class="content">
         <h1>Assigned Tickets</h1>
         <p>These are the tickets assigned to you.</p>
@@ -120,12 +120,12 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Tickets will be dynamically loaded here -->
+           
           </tbody>
         </table>
       </div>
 
-      <!-- Pending Tickets Content -->
+      
       <div id="pending-tickets" class="content">
         <h1>Pending Tickets</h1>
         <p>These tickets are pending resolution.</p>
@@ -151,13 +151,13 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Tickets will be dynamically loaded here -->
+            
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Popup Form -->
+    
     <div class="popup-overlay" id="popupOverlay" onclick="togglePopup()"></div>
     <div class="popup" id="popup">
       <div class="popup-header">
@@ -191,7 +191,7 @@
         <div class="form-group">
           <label for="ticketAssignee">Assignee:</label>
           <select id="ticketAssignee" required>
-            <!-- Will be populated dynamically -->
+            
           </select>
         </div>
         
@@ -212,7 +212,7 @@
       </form>
     </div>
 
-    <!-- Details Popup -->
+    
 <div class="popup-overlay" id="detailsPopupOverlay" onclick="toggleDetailsPopup()"></div>
 <div class="popup" id="detailsPopup">
   <div class="popup-header">
@@ -254,8 +254,5 @@
     </div>
   </div>
 </div>
-
-
-    <script src="script/script.js"></script>
   </body>
 </html>
