@@ -1,0 +1,47 @@
+{
+    "assignees": [
+      {
+        "employeeId": 101,
+        "employeeName": "John Doe",
+        "employeeEmail": "john.doe@example.com",
+        "employeeDepartment": "IT Team"
+      },
+      {
+        "employeeId": 102,
+        "employeeName": "Jane Smith",
+        "employeeEmail": "jane.smith@example.com",
+        "employeeDepartment": "Engineer"
+      },
+      {
+        "employeeId": 103,
+        "employeeName": "Robert White",
+        "employeeEmail": "robert.white@example.com",
+        "employeeDepartment": "Support Team"
+      },
+      {
+        "employeeId": 104,
+        "employeeName": "Emily Davis",
+        "employeeEmail": "emily.davis@example.com",
+        "employeeDepartment": "Customer Success"
+      },
+      {
+        "employeeId": 105,
+        "employeeName": "Michael Johnson",
+        "employeeEmail": "michael.johnson@example.com",
+        "employeeDepartment": "HR"
+      },
+      {
+        "employeeId": 106,
+        "employeeName": "Laura Wilson",
+        "employeeEmail": "laura.wilson@example.com",
+        "employeeDepartment": "Engineer"
+      },
+      {
+        "employeeId": 107,
+        "employeeName": "Daniel Taylor",
+        "employeeEmail": "daniel.taylor@example.com",
+        "employeeDepartment": "IT Team"
+      }
+    ]
+  }
+  

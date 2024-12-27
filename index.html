@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ticketing System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,63 +12,250 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
   </head>
   <body>
     <div class="side-menu">
-      <a id="menu-dashboard" onclick="showContent('dashboard', this)"
-        >Dashboard</a
-      >
-      <a id="menu-all-tickets" onclick="showContent('all-tickets', this)"
-        >All Tickets</a
-      >
-      <a
-        id="menu-assigned-tickets"
-        onclick="showContent('assigned-tickets', this)"
-        >Assigned Tickets</a
-      >
-      <a
-        id="menu-pending-tickets"
-        onclick="showContent('pending-tickets', this)"
-        >Pending Tickets</a
-      >
+      <a id="menu-dashboard" onclick="showContent('dashboard', this)">Dashboard</a>
+      <a id="menu-all-tickets" onclick="showContent('all-tickets', this)">All Tickets</a>
+      <a id="menu-assigned-tickets" onclick="showContent('assigned-tickets', this)">Assigned Tickets</a>
+      <a id="menu-pending-tickets" onclick="showContent('pending-tickets', this)">Pending Tickets</a>
     </div>
 
     <div class="main-content">
-      <button class="popup-button" onclick="togglePopup()">Open Popup</button>
+      <button class="popup-button" onclick="togglePopup()">Create New Ticket</button>
+
+      <!-- Dashboard Content -->
       <div id="dashboard" class="content active">
         <h1>Dashboard</h1>
         <p>Welcome to the ticketing system dashboard.</p>
         <div class="box-container">
           <div class="row">
-            <div class="box small">Pending Tickets</div>
-            <div class="box small">Resolved Tickets</div>
+            <div class="box small">
+              <h3>Pending Tickets</h3>
+              <p id="pendingTicketsCount">0</p> <!-- Dynamic count will be here -->
+              <button class="navigate-btn" onclick="showContent('pending-tickets', this)"><i class="fa-solid fa-play" ></i></button>
+            </div>
+            <div class="box small">
+              <h3>Assigned Tickets</h3>
+              <p id="assignedTicketsCount">0</p> <!-- Dynamic count will be here -->
+              <button class="navigate-btn" onclick="showContent('assigned-tickets', this)"><i class="fa-solid fa-play"></i></button>
+            </div>
           </div>
-          <div class="box large">All Tickets</div>
+          <div class="box large">
+            <h3>Total Tickets</h3>
+            <p id="totalTicketsCount">0</p> <!-- Dynamic count will be here -->
+            <button class="navigate-btn" onclick="showContent('all-tickets', this)"><i class="fa-solid fa-play" ></i></button>
+          </div>
         </div>
       </div>
+
+      <!-- All Tickets Content -->
       <div id="all-tickets" class="content">
         <h1>All Tickets</h1>
         <p>Here is a list of all tickets in the system.</p>
+        <input
+          type="text"
+          id="allTicketsSearch"
+          class="search-box"
+          placeholder="Search All Tickets"
+          oninput="searchTickets('allTicketsSearch', 'ticketsTable')"
+        />
+        
+        <div class="filter-dropdown">
+          <label for="priorityFilter">Filter by Priority:</label>
+          <select id="priorityFilter" onchange="filterByPriority('ticketsTable')">
+            <option value="">All</option>
+            <option value="Resolve">Resolve</option>
+            <option value="Review">Review</option>
+            <option value="None">None</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+
+        <table id="ticketsTable">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>Ticket Number</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Customer Name</th>
+              <th>Customer Email</th>
+              <th>Assignee</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Tickets will be dynamically loaded here -->
+          </tbody>
+        </table>
       </div>
+
+      <!-- Assigned Tickets Content -->
       <div id="assigned-tickets" class="content">
         <h1>Assigned Tickets</h1>
         <p>These are the tickets assigned to you.</p>
+        <input
+          type="text"
+          id="assignedTicketsSearch"
+          class="search-box"
+          placeholder="Search Assigned Tickets"
+          oninput="searchTickets('assignedTicketsSearch', 'assignedTicketsTable')"
+        />
+        <table id="assignedTicketsTable">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>Ticket Number</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Customer Name</th>
+              <th>Customer Email</th>
+              <th>Assignee</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Tickets will be dynamically loaded here -->
+          </tbody>
+        </table>
       </div>
+
+      <!-- Pending Tickets Content -->
       <div id="pending-tickets" class="content">
         <h1>Pending Tickets</h1>
         <p>These tickets are pending resolution.</p>
+        <input
+          type="text"
+          id="pendingTicketsSearch"
+          class="search-box"
+          placeholder="Search Pending Tickets"
+          oninput="searchTickets('pendingTicketsSearch', 'pendingTicketsTable')"
+        />
+        <table id="pendingTicketsTable">
+          <thead>
+            <tr>
+              <th>Serial Number</th>
+              <th>Ticket Number</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Customer Name</th>
+              <th>Customer Email</th>
+              <th>Assignee</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Tickets will be dynamically loaded here -->
+          </tbody>
+        </table>
       </div>
     </div>
 
+    <!-- Popup Form -->
     <div class="popup-overlay" id="popupOverlay" onclick="togglePopup()"></div>
     <div class="popup" id="popup">
-      <h2>Popup Form</h2>
-      <form>
-        <input type="text" placeholder="Enter your name" />
-        <input type="email" placeholder="Enter your email" />
-        <button type="submit">Submit</button>
+      <div class="popup-header">
+        <div class="ticket-info">
+          <h2>Create New Ticket</h2>
+          <div class="ticket-number">Ticket #: <span id="displayTicketNumber"></span></div>
+        </div>
+        <button class="close-button" onclick="togglePopup()">&times;</button>
+      </div>
+      <form id="newTicketForm" onsubmit="submitNewTicket(event)">
+        <div class="form-group">
+          <label for="ticketTitle">Title:</label>
+          <input type="text" id="ticketTitle" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="ticketDescription">Description:</label>
+          <textarea id="ticketDescription" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="customerName">Customer Name:</label>
+          <input type="text" id="customerName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="customerEmail">Customer Email:</label>
+          <input type="email" id="customerEmail" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="ticketAssignee">Assignee:</label>
+          <select id="ticketAssignee" required>
+            <!-- Will be populated dynamically -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="ticketPriority">Priority:</label>
+          <select id="ticketPriority" required>
+            <option value="Resolve">Resolve</option>
+            <option value="Review">Review</option>
+            <option value="None">None</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+        
+        <div class="form-buttons">
+          <button type="submit">Submit</button>
+          <button type="button" onclick="togglePopup()">Cancel</button>
+        </div>
       </form>
     </div>
-    <script src="assests/script/script.js"></script>
+
+    <!-- Details Popup -->
+<div class="popup-overlay" id="detailsPopupOverlay" onclick="toggleDetailsPopup()"></div>
+<div class="popup" id="detailsPopup">
+  <div class="popup-header">
+    <div class="ticket-info">
+      <h2>Ticket Details</h2>
+      <div class="ticket-number">Ticket #: <span id="detailsTicketNumber"></span></div>
+    </div>
+    <button class="close-button" onclick="toggleDetailsPopup()">&times;</button>
+  </div>
+  <div class="ticket-details">
+    <div class="detail-group">
+      <label>Title:</label>
+      <p id="detailsTitle"></p>
+    </div>
+    
+    <div class="detail-group">
+      <label>Description:</label>
+      <p id="detailsDescription"></p>
+    </div>
+    
+    <div class="detail-group">
+      <label>Customer Name:</label>
+      <p id="detailsCustomerName"></p>
+    </div>
+    
+    <div class="detail-group">
+      <label>Customer Email:</label>
+      <p id="detailsCustomerEmail"></p>
+    </div>
+    
+    <div class="detail-group">
+      <label>Assignee:</label>
+      <p id="detailsAssignee"></p>
+    </div>
+    
+    <div class="detail-group">
+      <label>Priority:</label>
+      <p id="detailsPriority"></p>
+    </div>
+  </div>
+</div>
+
+
+    <script src="script/script.js"></script>
   </body>
 </html>

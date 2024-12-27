@@ -1,0 +1,53 @@
+{
+    "customers": [
+      {
+        "email": "alice.johnson@example.com",
+        "name": "Alice Johnson",
+        "password": "P@ssword123",
+        "employeeDepartment": "Customer Success"
+      },
+      {
+        "email": "bob.carter@example.com",
+        "name": "Bob Carter",
+        "password": "SecureP@ss",
+        "employeeDepartment": "Support Team"
+      },
+      {
+        "email": "charlie.lee@example.com",
+        "name": "Charlie Lee",
+        "password": "Pass12345",
+        "employeeDepartment": "HR"
+      },
+      {
+        "email": "dana.miller@example.com",
+        "name": "Dana Miller",
+        "password": "Welcome@123",
+        "employeeDepartment": "Engineer"
+      },
+      {
+        "email": "eve.smith@example.com",
+        "name": "Eve Smith",
+        "password": "EvePass2023",
+        "employeeDepartment": "IT Team"
+      },
+      {
+        "email": "franklin.torres@example.com",
+        "name": "Franklin Torres",
+        "password": "FrankT123!",
+        "employeeDepartment": "Customer Success"
+      },
+      {
+        "email": "grace.adams@example.com",
+        "name": "Grace Adams",
+        "password": "Grace2024",
+        "employeeDepartment": "Support Team"
+      },
+      {
+        "email": "henry.brown@example.com",
+        "name": "Henry Brown",
+        "password": "HenryP@ss",
+        "employeeDepartment": "IT Team"
+      }
+    ]
+  }
+  

@@ -1,0 +1,112 @@
+{
+  "tickets": [
+    {
+      "ticketNumber": 1,
+      "title": "Login Issue",
+      "description": "User unable to login after password reset.",
+      "customerName": "Alice Johnson",
+      "customerEmail": "alice.johnson@example.com",
+      "assignee": 101,
+      "priority": "Resolve"
+    },
+    {
+      "ticketNumber": 2,
+      "title": "Payment Gateway Error",
+      "description": "Payment failing on checkout page.",
+      "customerName": "Bob Carter",
+      "customerEmail": "bob.carter@example.com",
+      "assignee": 102,
+      "priority": "Review"
+    },
+    {
+      "ticketNumber": 3,
+      "title": "UI Bug on Dashboard",
+      "description": "Dashboard stats not aligning properly on mobile view.",
+      "customerName": "Charlie Lee",
+      "customerEmail": "charlie.lee@example.com",
+      "assignee": 103,
+      "priority": "Pending"
+    },
+    {
+      "ticketNumber": 4,
+      "title": "Feature Request: Dark Mode",
+      "description": "Customer requested dark mode functionality.",
+      "customerName": "Dana Miller",
+      "customerEmail": "dana.miller@example.com",
+      "assignee": 104,
+      "priority": "None"
+    },
+    {
+      "ticketNumber": 5,
+      "title": "Account Locked",
+      "description": "User account locked due to multiple failed login attempts.",
+      "customerName": "Eve Smith",
+      "customerEmail": "eve.smith@example.com",
+      "assignee": 105,
+      "priority": "Resolve"
+    },
+    {
+      "ticketNumber": 6,
+      "title": "Data Export Issue",
+      "description": "Exported data contains incorrect timestamps.",
+      "customerName": "Franklin Torres",
+      "customerEmail": "franklin.torres@example.com",
+      "assignee": 106,
+      "priority": "Review"
+    },
+    {
+      "ticketNumber": 7,
+      "title": "Error 500 on Reports Page",
+      "description": "Reports page throws a 500 error intermittently.",
+      "customerName": "Grace Adams",
+      "customerEmail": "grace.adams@example.com",
+      "assignee": 107,
+      "priority": "Pending"
+    },
+    {
+      "ticketNumber": 8,
+      "title": "Forgot Password Email Not Received",
+      "description": "User did not receive the password reset email.",
+      "customerName": "Henry Brown",
+      "customerEmail": "henry.brown@example.com",
+      "assignee": "None",
+      "priority": 103
+    },
+    {
+      "ticketNumber": 9,
+      "title": "Slow Application Load Times",
+      "description": "Application takes over 30 seconds to load the dashboard.",
+      "customerName": "Ivy Williams",
+      "customerEmail": "ivy.williams@example.com",
+      "assignee": 108,
+      "priority": "Resolve"
+    },
+    {
+      "ticketNumber": 10,
+      "title": "Incorrect Billing Amount",
+      "description": "Customer charged an incorrect amount for the subscription.",
+      "customerName": "Jack Robinson",
+      "customerEmail": "jack.robinson@example.com",
+      "assignee": 109,
+      "priority": "Review"
+    },
+    {
+      "ticketNumber": 11,
+      "title": "Search Functionality Broken",
+      "description": "Search results do not return the expected items.",
+      "customerName": "Karen Wright",
+      "customerEmail": "karen.wright@example.com",
+      "assignee": 110,
+      "priority": "Resolve"
+    },
+    {
+      "ticketNumber": 12,
+      "title": "Accessibility Feedback",
+      "description": "Screen reader compatibility issues reported.",
+      "customerName": "Leo Martinez",
+      "customerEmail": "leo.martinez@example.com",
+      "assignee": 111,
+      "priority": "Pending"
+    }
+  ]
+}
