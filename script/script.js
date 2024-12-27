@@ -1,7 +1,5 @@
 (function(){
-  emailjs.init({
-    publicKey: "QxYrAClmmtfof8yPp",
-  });
+  emailjs.init('QxYrAClmmtfof8yPp');
 })();
 
 
@@ -195,12 +193,14 @@ function updateDashboardCounts() {
   
   const totalTickets = tickets.length;
   const pendingTickets = tickets.filter(ticket => ticket.priority === "Pending").length;
-  const resolvedTickets = tickets.filter(ticket => ticket.priority === "Resolve").length;
+  const resolvedTickets = tickets.filter(ticket => ticket.priority === "None").length;
 
+
+  console.log(resolvedTickets)
   // Update the dashboard
   document.getElementById('totalTicketsCount').textContent = totalTickets;
   document.getElementById('pendingTicketsCount').textContent = pendingTickets;
-  document.getElementById('resolvedTicketsCount').textContent = resolvedTickets;
+  document.getElementById('assignedTicketsCount').textContent = resolvedTickets;
 }
 
 // Initialize localStorage and update counts on page load
@@ -447,7 +447,7 @@ function updateDashboardCounts() {
   // Update the dashboard
   document.getElementById('totalTicketsCount').textContent = totalTickets;
   document.getElementById('pendingTicketsCount').textContent = pendingTickets;
-  document.getElementById('resolvedTicketsCount').textContent = resolvedTickets;
+  document.getElementById('resolvedTicketsCount').innerText = resolvedTickets;
 }
 
 // Initialize localStorage and update counts on page load
@@ -610,15 +610,44 @@ function sendEmailToCustomer(ticket) {
 
   // Send the email using Email.js
 
+  
+   // Send the email using Email.js
+   emailjs.send(serviceID, templateID, {
+    to_email: customerEmail,
+    subject: subject,
+    message: body
+  }).then(() => {
+    console.log('Email sent successfully!');
+  }).catch((err) => {
+    console.error('Error sending email:', err);
+  });
+}
+
+
+function sendEmailToCustomer(ticket) {
+  const customerEmail = ticket.customerEmail; // Customer's email from the ticket data
+  const ticketNumber = ticket.ticketNumber;
+  const ticketTitle = ticket.title;
+  console.log("Harsh")
+  console.log(ticket)
+  // Prepare dynamic template parameters
+  const templateParams = {
+    customerEmail: customerEmail, // Dynamic recipient email
+    ticket_number: ticketNumber, // Dynamic ticket number
+    ticket_description: ticket.description,
+    customer_name: ticket.customerName,
+    ticket_title: ticketTitle
+  };
+
   const serviceID = 'service_vnx3xre';
   const templateID = 'template_ss4u22c';
 
-  emailjs.sendForm(serviceID, templateID, this)
+  // Send the email using Email.js
+  emailjs.send(serviceID, templateID, templateParams)
     .then(() => {
-      btn.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
+      console.log('Email sent successfully to:', customerEmail);
+    })
+    .catch((err) => {
+      console.error('Error sending email:', err);
     });
 }
