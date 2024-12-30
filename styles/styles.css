@@ -12,7 +12,7 @@ body {
 }
 
 .side-menu {
-  width: 200px;
+  min-width:  200px;
   background-color: #000000;
   color: white;
   display: flex;
@@ -77,11 +77,12 @@ body {
 }
 
 .box.large {
-  width: 96%;
+  width: 98%;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 50px;
 }
 
 .box h3 {
@@ -126,6 +127,7 @@ body {
   padding: 20px;
   z-index: 1000;
 }
+
 
 .popup.active {
   display: block;

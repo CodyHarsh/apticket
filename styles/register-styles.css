@@ -10,6 +10,7 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     overflow: hidden;
+    padding: 15px;
   }
 
   .image-box {
@@ -34,6 +35,14 @@
     color: #fff;
   }
 
+  .form-box a{
+    text-decoration: none;
+  }
+
+  .message a{
+    color: white !important;
+    text-decoration: underline !important;
+  }
   @media screen and (max-width: 768px) {
     .register-container {
       flex-direction: column;
