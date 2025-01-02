@@ -187,16 +187,13 @@ function filterByPriority(tableId) {
 }
 
 
-// Update the dashboard ticket counts
 function updateDashboardCounts() {
   const tickets = JSON.parse(localStorage.getItem('tickets')) || [];
   
   const totalTickets = tickets.length;
   const pendingTickets = tickets.filter(ticket => ticket.priority === "Pending").length;
-  const resolvedTickets = tickets.filter(ticket => ticket.priority === "None").length;
+  const resolvedTickets = tickets.filter(ticket => ticket.priority === "None").length;  // Changed from "Resolve" to "None" to match loadAssignedTickets()
 
-
-  console.log(resolvedTickets)
   // Update the dashboard
   document.getElementById('totalTicketsCount').textContent = totalTickets;
   document.getElementById('pendingTicketsCount').textContent = pendingTickets;
@@ -210,46 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const dashboardLink = document.getElementById('menu-dashboard');
   showContent('dashboard', dashboardLink);
 });// Initialize data in localStorage when the page loads
-function initializeLocalStorage() {
-  if (!localStorage.getItem('tickets')) {
-    fetch("database/tickets.json")
-      .then(response => response.json())
-      .then(data => {
-        localStorage.setItem('tickets', JSON.stringify(data.tickets));
-      })
-      .catch(error => console.error("Error initializing tickets:", error));
-  }
 
-  if (!localStorage.getItem('assignees')) {
-    fetch("database/assignees.json")
-      .then(response => response.json())
-      .then(data => {
-        localStorage.setItem('assignees', JSON.stringify(data.assignees));
-      })
-      .catch(error => console.error("Error initializing assignees:", error));
+// Update the navigation buttons in the dashboard boxes
+function showContentFromDashboard(contentId) {
+  const menuItem = document.getElementById(`menu-${contentId}`);
+  if (menuItem) {
+    showContent(contentId, menuItem);
   }
 }
 
-function showContent(contentId, menuItem) {
-  const contents = document.querySelectorAll('.content');
-  contents.forEach(content => content.classList.remove('active'));
 
-  const menuItems = document.querySelectorAll('.side-menu a');
-  menuItems.forEach(item => item.classList.remove('active'));
-  menuItem.classList.add('active');
-
-  const contentElement = document.getElementById(contentId);
-
-  if (contentId === "all-tickets") {
-    loadTicketsTable();
-  } else if (contentId === "assigned-tickets") {
-    loadAssignedTickets();
-  } else if (contentId === "pending-tickets") {
-    loadPendingTickets();
-  }
-
-  contentElement.classList.add('active');
-}
 
 function loadTicketsTable() {
   fetchFromLocalStorageAndRender();

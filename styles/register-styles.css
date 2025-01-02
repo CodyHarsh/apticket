@@ -126,7 +126,7 @@
   }
 
   .btn:hover {
-    background: #ffffff;
+    filter: brightness(120%);
   }
 
   .message {

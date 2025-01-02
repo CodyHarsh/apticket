@@ -12,12 +12,15 @@ body {
 }
 
 .side-menu {
-  min-width:  200px;
+  height: 100%;
+  width: 13%;
   background-color: #000000;
   color: white;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
+  position: fixed ;
+  z-index: 2;
 }
 
 .side-menu a {
@@ -39,8 +42,8 @@ body {
 .main-content {
   flex: 1;
   padding: 20px;
-  background-color: #ececec;
-  position: relative;
+  margin-left: 13.5%;
+  height: 100%;
 }
 
 .content {
@@ -501,6 +504,11 @@ td {
 
 .detail-group {
   margin-bottom: 15px;
+}
+
+.section_1{
+  width: 100%;
+  display: flex;
 }
 
 .detail-group label {
